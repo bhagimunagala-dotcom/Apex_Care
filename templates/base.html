@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        {% block title %}
+        ApexCare
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script
+        src="{{ url_for('static', filename='app.js') }}"
+        defer>
+    </script>
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header class="top">
+
+        <!-- LOGO -->
+        <a class="brand" href="/">
+            Apex<span>Care</span>
+        </a>
+
+        <!-- NAVIGATION -->
+        <nav class="nav">
+
+            <!-- ABOUT BUTTON -->
+            <a
+                class="btn light"
+                href="/about">
+                About
+            </a>
+
+            <!-- DARK MODE -->
+            <button
+                class="btn light"
+                type="button"
+                onclick="toggleDark()">
+                Dark mode
+            </button>
+
+            <!-- LOGOUT -->
+            {% if session.get('role') %}
+                <a
+                    class="btn light"
+                    href="/logout">
+                    Logout
+                </a>
+            {% endif %}
+
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN PAGE CONTENT -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>
